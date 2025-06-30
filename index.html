@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot com PDF Dinâmico</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Chatbot com PDF</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label>1. Envie um PDF:</label><br>
+        <input type="file" name="pdf" accept="application/pdf">
+        <button type="submit">Carregar PDF</button>
+    </form>
+    <br>
+    <form method="post">
+        <label>2. Faça sua pergunta:</label><br>
+        <input type="text" name="pergunta" placeholder="Digite sua pergunta..." required>
+        <button type="submit">Perguntar</button>
+    </form>
+    {% if resposta %}
+        <div class="resposta">
+            <strong>Bot:</strong> {{ resposta }}
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
